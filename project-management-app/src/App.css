@@ -1,1 +1,142 @@
+html, body {
+    height: 100%;
+}
 
+body {
+    margin: 0;
+}
+
+.navbar-right-justify {
+    right: 5%;
+    position: absolute;
+}
+
+.hero-banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/projectbackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    max-width: 100%;
+    height:  50%;
+}
+
+.hero-title-text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3em;
+    font: bolder;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(179, 219, 222);
+}
+
+.hero-small-text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255,248,220);
+}
+
+.center-image {
+    width: 50%;
+}
+
+.col-md-4 {
+    display: grid;
+    place-items: center;
+}
+
+img {
+    transform: scale(1.3);
+    transition-duration: .5s;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.card-text {
+    padding-right: 25px;
+}
+
+.card-title {
+    margin-top: 10px;
+}
+
+.card:hover #text-underline {
+    text-decoration-line: underline;
+}
+
+.card:hover img{
+    transform: scale(1.5);
+    transition-duration: .5s;
+}
+
+.blink {
+    animation: blink 1.5s linear 5;
+}
+
+@keyframes blink {
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    75% {
+        opacity: 0.5;
+    }
+}
+
+#low-priority {
+    display: table;
+    padding: 7px;
+    border-radius: 1em;
+    background-color: #1eff1e;
+    color: black;
+}
+
+#medium-priority {
+    display: table;
+    padding: 7px;
+    border-radius: 1em;
+    background-color: #ffdb1e;
+    color: black;
+}
+
+#high-priority {
+    display: table;
+    padding: 7px;
+    border-radius: 1em;
+    background-color: coral;
+    color: rgb(255,248,220);
+}
+
+.menu-container {
+    display: inline-flex;
+}
+
+select {
+    text-align-last: center;
+}
+
+.index-titles {
+    display: inline;
+    padding: 12px;
+    border-radius: 1em;
+    background-color: black;
+    color: white;
+}
