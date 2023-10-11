@@ -1,6 +1,7 @@
 import React from 'react';
 import Bug from '../assets/laptop-bug.png';
-import {IndexNav} from '../IndexNav.jsx';
+import { IndexNav } from '../IndexNav.jsx';
+import { Banner } from '../Banner.jsx';
 import { useState, useEffect } from 'react';
 
 
@@ -18,6 +19,7 @@ export function BugsIndex() {
 
     return (
         <>
+        <Banner />
         <IndexNav />
             <div className="container">
                 <div className="row my-5 d-sm-inline-flex d-none">
@@ -38,11 +40,11 @@ export function BugsIndex() {
                                             {(() => {
                                                 switch(bug.priority) {
                                                     case "Low": 
-                                                        return <p className="card-text blink" id="low-priority">{bug.priority}</p>
+                                                        return <p className="card-text blink" id="low-priority">{bug.priority} Priority</p>
                                                     case "Medium":
-                                                        return <p className="card-text blink" id="medium-priority">{bug.priority}</p>
+                                                        return <p className="card-text blink" id="medium-priority">{bug.priority} Priority</p>
                                                     case "High": 
-                                                        return <p className="card-text blink" id="high-priority">{bug.priority}</p>
+                                                        return <p className="card-text blink" id="high-priority">{bug.priority} Priority</p>
                                                 }
                                             })()}
                                         </div>

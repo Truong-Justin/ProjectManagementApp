@@ -1,6 +1,7 @@
 import React from 'react';
 import Project from '../assets/project-picture.png';
-import {IndexNav} from '../IndexNav.jsx';
+import { IndexNav } from '../IndexNav.jsx';
+import { Banner } from '../Banner.jsx';
 import { useState, useEffect } from 'react';
 
 
@@ -18,6 +19,7 @@ export function ProjectsIndex() {
 
     return (
         <>
+        <Banner />
             <IndexNav />
             <div className="container">
                 <div className="row my-5 d-sm-inline-flex d-none">
@@ -38,11 +40,11 @@ export function ProjectsIndex() {
                                             {(() => {
                                                 switch(project.priority) {
                                                     case "Low": 
-                                                        return <p className="card-text blink" id="low-priority">{project.priority}</p>
+                                                        return <p className="card-text blink" id="low-priority">{project.priority} Priority</p>
                                                     case "Medium":
-                                                        return <p className="card-text blink" id="medium-priority">{project.priority}</p>
+                                                        return <p className="card-text blink" id="medium-priority">{project.priority} Priority</p>
                                                     case "High": 
-                                                        return <p className="card-text blink" id="high-priority">{project.priority}</p>
+                                                        return <p className="card-text blink" id="high-priority">{project.priority} Priority</p>
                                                 }
                                             })()}
                                         </div>
