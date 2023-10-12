@@ -1,5 +1,5 @@
 import React from 'react';
-import Project from '../assets/project-picture.png';
+import Project from '/src/assets/project-picture.png';
 import { IndexNav } from '../IndexNav.jsx';
 import { Banner } from '../Banner.jsx';
 import { useState, useEffect } from 'react';

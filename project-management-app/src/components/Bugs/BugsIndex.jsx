@@ -1,16 +1,22 @@
 import React from 'react';
-import Bug from '../assets/laptop-bug.png';
+import { Link } from 'react-router-dom';
+import Bug from '/src/assets/laptop-bug.png';
 import { IndexNav } from '../IndexNav.jsx';
 import { Banner } from '../Banner.jsx';
 import { useState, useEffect } from 'react';
 
 
-// Component sends a GET request to GetAllBugs
-// API endpoint and returns all the bug objects 
-// to user 
+// Component outputs to the user all bugs
+// that are returned from the database.
 export function BugsIndex() {
+
+    // bugsList is a collection that contains all bug
+    // objects returned from the database, that is populated
+    // using the useState hook.
     const [bugsList, setBugsList] = useState([]);
 
+    // useEffect hook sends a GET request to API endpoint everytime
+    // the BugsIndex component is rendered.
     useEffect(() => {
         fetch('https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetAllBugs')
         .then(response => response.json())
@@ -36,7 +42,7 @@ export function BugsIndex() {
                                             <h5 className="card-title" id="text-underline">Bug Id: {bug.bugId}</h5>
                                             <p className="card-text">{bug.description.substring(0, 70)}...</p>
                                             <p className="card-text"><small className="text-muted">Date Submitted: {bug.date}</small></p>
-                                            {/*anonymous function uses switch statement to set the priority color based on the bug's priority*/}
+                                            {/*Anonymous function uses switch statement to set the priority color based on the bug's priority.*/}
                                             {(() => {
                                                 switch(bug.priority) {
                                                     case "Low": 
@@ -47,6 +53,9 @@ export function BugsIndex() {
                                                         return <p className="card-text blink" id="high-priority">{bug.priority} Priority</p>
                                                 }
                                             })()}
+                                                {/*Bug object is passed as a property to the ViewBug component
+                                                to render the individual bug object for the user.*/}
+                                                <Link to="/ViewBug" className="card-link" state={bug}></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -54,6 +63,9 @@ export function BugsIndex() {
                         </div>
                     )
                 })}
+                </div>
+                <div className="text-center">
+                    <Link to="/AddBug" className="my-5 btn btn-md btn-secondary shadow">+ Add a bug</Link>
                 </div>
             </div>
         </>
