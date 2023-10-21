@@ -1,7 +1,7 @@
 import React from 'react';
 import Person from '/src/assets/person-picture.png';
 import { IndexNav } from '../IndexNav.jsx';
-import { Banner } from '../Banner.jsx';
+import { Banner } from '../Layout.jsx';
 import { useState, useEffect } from 'react';
 
 
