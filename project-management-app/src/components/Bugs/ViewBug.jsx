@@ -9,22 +9,16 @@ export function ViewBug() {
     const [bug, setBug] = useState({});
     const [project, setProject] = useState({});
 
-    // Function calls the the GetBugById
-    // API endpoint and returns the individual
-    // bug object.
     async function getBug() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetBugById?id=${bugId}`);
-        const data = await response.json();
-        return data;
+        const bug = await response.json();
+        return bug;
     }
 
-    // Function calls the GetProjectById
-    // using the bug id and returns the 
-    // project the bug belongs to.
     async function getProject(bug) {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetProjectById?projectId=${bug.projectId}`);
-        const data = await response.json();
-        return data;
+        const project = await response.json();
+        return project;
     }
 
     // Function returns the correct outline
@@ -47,11 +41,11 @@ export function ViewBug() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const responseBug = await getBug();
-                setBug(responseBug);
+                const bug = await getBug();
+                setBug(bug);
 
-                const responseProject = await getProject(responseBug);
-                setProject(responseProject);
+                const project = await getProject(bug);
+                setProject(project);
             } catch (error) {
                 console.log(error);
             }
@@ -70,13 +64,13 @@ export function ViewBug() {
                             <div className="row my-5">
                                 <div className="col">
                                     <div className="form-outline">
-                                        <h4 className="text-decoration-underline">Project</h4>
+                                        <h3 className="text-decoration-underline">Project</h3>
                                         <Link to={`/viewproject/${bug.projectId}`}>{project.projectTitle}</Link>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="form-outline">
-                                        <h4 className="text-decoration-underline">Bug Id</h4>
+                                        <h3 className="text-decoration-underline">Bug Id</h3>
                                         <h5 className="fw-light">{bug.bugId}</h5>
                                     </div>
                                 </div>
@@ -84,13 +78,13 @@ export function ViewBug() {
                             <div className="row my-5">
                                 <div className="col">
                                     <div className="form-outline">
-                                        <h4 className="text-decoration-underline">Date Submitted</h4>
+                                        <h3 className="text-decoration-underline">Date Submitted</h3>
                                         <h5 className="fw-light">{bug.date}</h5>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="form-outline">
-                                        <h4 className="text-decoration-underline">Priority Level</h4>
+                                        <h3 className="text-decoration-underline">Priority Level</h3>
                                         <h5 className="fw-light">{getPriority(bug)}</h5>
                                     </div>
                                 </div>
@@ -98,13 +92,13 @@ export function ViewBug() {
                             <div className="row my-5">
                                 <div className="col">
                                     <div className="form-outline">
-                                        <h4 className="text-decoration-underline">Assigned-To</h4>
+                                        <h3 className="text-decoration-underline">Assigned-To</h3>
                                         <h5 className="fw-light">{bug.assignment}</h5>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="form-outline">
-                                        <h4 className="text-decoration-underline">Description</h4>
+                                        <h3 className="text-decoration-underline">Description</h3>
                                         <h5 className="fw-light">{bug.description}</h5>
                                     </div>
                                 </div>

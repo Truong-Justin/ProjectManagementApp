@@ -140,3 +140,8 @@ select {
     background-color: black;
     color: white;
 }
+
+.center-loader {
+    position: absolute;
+    left: 50%;
+}

@@ -2,23 +2,42 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Bug from '/src/assets/laptop-bug.png';
 import { useState, useEffect } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 
 
-// Component outputs to the user all bugs
-// that are returned from the database.
+// Component outputs to the user all bug records
+// that exist in the database.
 export function BugsIndex() {
+    const [bugsList, setBugsList] = useState(null);
 
-    // bugsList is a collection that contains all bug
-    // objects returned from the database, that is populated
-    // using the useState hook.
-    const [bugsList, setBugsList] = useState([]);
+    // Function returns the correct outline
+    // color for the priority level using the 
+    // bug object's priority property. 
+    function getPriority(bug) {
+        switch(bug.priority) {
+            case "Low": 
+                return <p className="card-text blink" id="low-priority">{bug.priority} Priority</p>
+            case "Medium":
+                return <p className="card-text blink" id="medium-priority">{bug.priority} Priority</p>
+            case "High": 
+                return <p className="card-text blink" id="high-priority">{bug.priority} Priority</p>
+        }
+    }
 
-    // useEffect hook sends a GET request to API endpoint everytime
-    // the BugsIndex component is rendered.
+    // Calls an API endpoint and sets the 
+    // bugsList with all the bug records
+    // when the BugsIndex component is rendered.
     useEffect(() => {
-        fetch('https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetAllBugs')
-        .then(response => response.json())
-        .then(data => setBugsList(data))
+        async function fetchBugs() {
+            try {
+                const response = await fetch('https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetAllBugs');
+                const bugs = await response.json();
+                setBugsList(bugs);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        fetchBugs();
     },[])
 
     return (
@@ -38,27 +57,19 @@ export function BugsIndex() {
                                         <h5 className="card-title" id="text-underline">Bug Id: {bug.bugId}</h5>
                                         <p className="card-text">{bug.description.substring(0, 70)}...</p>
                                         <p className="card-text"><small className="text-muted">Date Submitted: {bug.date}</small></p>
-                                        {/*Anonymous function uses switch statement to set the priority color based on the bug's priority.*/}
-                                        {(() => {
-                                            switch(bug.priority) {
-                                                case "Low": 
-                                                    return <p className="card-text blink" id="low-priority">{bug.priority} Priority</p>
-                                                case "Medium":
-                                                    return <p className="card-text blink" id="medium-priority">{bug.priority} Priority</p>
-                                                case "High": 
-                                                    return <p className="card-text blink" id="high-priority">{bug.priority} Priority</p>
-                                            }
-                                        })()}
-                                            {/*Bug object is passed as a property to the ViewBug component
-                                            to render the individual bug object for the user.*/}
-                                            <Link to={`/viewbug/${bug.bugId}`} className="card-link"></Link>
+                                        {getPriority(bug)}
+                                        {/*The selected bug object's Id is passed 
+                                        to the ViewBug component through the URL */}
+                                        <Link to={`/viewbug/${bug.bugId}`} className="card-link"></Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )
-            })) : <h2>Loading... </h2>}
+            })) : (<Spinner className="center-loader" animation="border" role="status">
+                       <span className="visually-hidden">Loading...</span>
+                  </Spinner>)}
             </div>
             <div className="text-center">
                 <Link to="/AddBug" className="my-5 btn btn-md btn-secondary shadow">+ Add a bug</Link>
