@@ -39,7 +39,6 @@ export function ProjectsIndex() {
     },[])
 
     return (
-        <>
         <div className="container" style={{display: 'flex'}}>
             <div className="row my-5 d-sm-inline-flex d-none">
             {projectsList ? ( projectsList.map(project => {
@@ -56,8 +55,6 @@ export function ProjectsIndex() {
                                         <p className="card-text" >{project.description.substring(0, 70)}...</p>
                                         <p className="card-text"><small className="text-muted">Date Submitted: {project.date}</small></p>
                                         {getPriority(project)}
-                                        {/*The selected project object's Id is passed 
-                                            to the ViewProject component through the URL */}
                                         <Link to={`/viewproject/${project.projectId}`} state={{project}} className="card-link"></Link>
                                     </div>
                                 </div>
@@ -70,6 +67,5 @@ export function ProjectsIndex() {
                    </Spinner>)}
             </div>
         </div>
-        </>
     )
 }

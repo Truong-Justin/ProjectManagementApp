@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Person from '/src/assets/person-picture.png';
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
@@ -24,7 +25,6 @@ export function EmployeesIndex() {
     },[])
 
     return (
-        <>
         <div className="container">
             <div className="row my-5 d-sm-inline-flex d-none">
             {employeesList ? ( employeesList.map(employee => {
@@ -43,6 +43,7 @@ export function EmployeesIndex() {
                                     </div>
                                 </div>
                             </div>
+                            <Link to={`/viewemployee/${employee.employeeId}`} className="card-link"></Link>
                         </div>
                     </div>
                 )
@@ -51,6 +52,5 @@ export function EmployeesIndex() {
                    </Spinner>)}
             </div>
         </div>
-        </>
     )
 }

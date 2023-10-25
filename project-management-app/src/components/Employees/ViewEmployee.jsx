@@ -19,6 +19,12 @@ export function ViewEmployee() {
         return data;
     }
 
+    function deleteEmployee(employeeId) {
+
+    }
+
+    // Sets the state of the employee and
+    // project objects
     useEffect(() => {
         async function fetchData() {
             const employee = await getEmployee();
@@ -31,11 +37,71 @@ export function ViewEmployee() {
     },[])
 
     return (
-        <>
-        <p>{employee.employeeId}</p>
-        <p>{employee.firstName}</p>
-        <p>{employee.lastName}</p>
-        <p>{project.projectTitle}</p>
-        </>
+        <div className="container d-none d-sm-none d-md-block">
+            <div className="my-5 mx-auto">
+                <div className="card shadow bg-light">
+                    <div className="col-md-11 mx-auto">
+                        <h1 className="mt-3 text-center text-decoration-underline">Employee Details</h1>
+                        <hr />
+                        <div className="card px-5 py-5 my-5 shadow">
+                            <div className="row my-5">
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Name</h3>
+                                        <h5 className="fw-light">{employee.firstName} {employee.lastName}</h5>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Employee Id</h3>
+                                        <h5 className="fw-light">{employee.employeeId}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row my-5">
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Project Assigned-To</h3>
+                                        <Link to={`/viewproject/${employee.projectId}`}>{project.projectTitle}</Link>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Hire Date</h3>
+                                        <h5 className="fw-light">{employee.hireDate}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row my-5">
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Address</h3>
+                                        <h5 className="fw-light">{employee.address}</h5>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Zip Code</h3>
+                                        <h5 className="fw-light">{employee.zip}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row my-5">
+                                <div className="col">
+                                    <div className="form-outline">
+                                        <h3 className="text-decoration-underline">Phone Number</h3>
+                                        <h5 className="fw-light">{employee.phone}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mt-5">
+                                <Link className="btn btn-secondary shadow" to="/employeesindex">Back</Link>
+                                <button onClick={deleteEmployee(employee.employeeId)} className="btn btn-danger mx-1">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }

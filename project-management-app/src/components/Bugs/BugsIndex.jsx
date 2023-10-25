@@ -41,7 +41,6 @@ export function BugsIndex() {
     },[])
 
     return (
-        <>
         <div className="container">
             <div className="row my-5 d-sm-inline-flex d-none">
             {bugsList ? ( bugsList.map(bug => {
@@ -58,8 +57,6 @@ export function BugsIndex() {
                                         <p className="card-text">{bug.description.substring(0, 70)}...</p>
                                         <p className="card-text"><small className="text-muted">Date Submitted: {bug.date}</small></p>
                                         {getPriority(bug)}
-                                        {/*The selected bug object's Id is passed 
-                                        to the ViewBug component through the URL */}
                                         <Link to={`/viewbug/${bug.bugId}`} className="card-link"></Link>
                                     </div>
                                 </div>
@@ -75,6 +72,5 @@ export function BugsIndex() {
                 <Link to="/AddBug" className="my-5 btn btn-md btn-secondary shadow">+ Add a bug</Link>
             </div>
         </div>
-        </>
     )
 }

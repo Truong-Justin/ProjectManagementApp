@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Person from '/src/assets/person-picture.png';
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
@@ -24,12 +25,11 @@ export function ProjectManagersIndex() {
     },[])
 
     return (
-        <>
         <div className="container">
             <div className="row my-5 d-sm-inline-flex d-none">
-            {managersList ? ( managersList.map(manager => {
+            {managersList ? ( managersList.map(projectManager => {
                 return (
-                    <div className="col-md-4 mb-3" key={manager.projectManagerId}>
+                    <div className="col-md-4 mb-3" key={projectManager.projectManagerId}>
                         <div className="card mb-3 shadow bg-light">
                             <div className="row g-0">
                                 <div className="col-md-4">
@@ -37,12 +37,13 @@ export function ProjectManagersIndex() {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title" id="text-underline">{manager.firstName} {manager.lastName}</h5>
-                                        <p className="card-text">Manager Id: {manager.projectManagerId}</p>
-                                        <p className="card-text"><small className="text-muted">Hire Date: {manager.hireDate}</small></p>
+                                        <h5 className="card-title" id="text-underline">{projectManager.firstName} {projectManager.lastName}</h5>
+                                        <p className="card-text">Manager Id: {projectManager.projectManagerId}</p>
+                                        <p className="card-text"><small className="text-muted">Hire Date: {projectManager.hireDate}</small></p>
                                     </div>
                                 </div>
                             </div>
+                            <Link className="card-link" to={`/viewprojectmanager/${projectManager.projectManagerId}`}></Link>
                         </div>
                     </div>
                 )
@@ -51,6 +52,5 @@ export function ProjectManagersIndex() {
                    </Spinner>)}
             </div>
         </div>
-        </>
     )
 }

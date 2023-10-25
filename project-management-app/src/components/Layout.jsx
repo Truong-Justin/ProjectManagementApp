@@ -39,7 +39,7 @@ export function Layout() {
                 <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/'}>Projects</Link>
                 <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/BugsIndex'}>Bugs</Link>
                 <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/EmployeesIndex'}>Employees</Link>
-                <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/ProjectManagersIndex'}>Employees</Link>
+                <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/ProjectManagersIndex'}>Managers</Link>
             </div>
         </div>
         <Outlet />

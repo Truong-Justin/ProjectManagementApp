@@ -35,6 +35,12 @@ export function ViewBug() {
         }
     }
 
+    // Send a POST request to API endpoint
+    // and delete the bug using the bugId.
+    function deleteBug(bugId) {
+
+    }
+
     // Sets the state of the bug and project
     // objects whenever the ViewBug component
     // is rendered.
@@ -60,7 +66,7 @@ export function ViewBug() {
                     <div className="col-md-11 mx-auto">
                         <h1 className="mt-3 text-center text-decoration-underline">Bug Details</h1>
                         <hr />
-                        <div className="card px-5 py-5 mx-5 my-5 shadow">
+                        <div className="card px-5 py-5 my-5 shadow">
                             <div className="row my-5">
                                 <div className="col">
                                     <div className="form-outline">
@@ -105,7 +111,8 @@ export function ViewBug() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/bugsindex">Back</Link>
-                                {/*Add an edit and delete bug button*/}
+                                <Link className="btn btn-dark shadow mx-1" to={`/editbug/${bug.bugId}`}>Edit Bug</Link>
+                                <button onClick={deleteBug(bug.bugId)} className="btn btn-danger">Delete</button>
                             </div>
                         </div>
                     </div>

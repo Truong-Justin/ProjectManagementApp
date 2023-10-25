@@ -44,6 +44,13 @@ export function ViewProject() {
         }
     }
 
+    // Send a POST request to API endpoint
+    // and deletes the project using the 
+    // projectId.
+    function deleteProject(projectId) {
+
+    }
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -66,14 +73,13 @@ export function ViewProject() {
     },[])
 
     return (
-        <>
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">
-                        <h1 className="text-decoration-underline text-center">Project Details</h1>
+                        <h1 className="text-decoration-underline text-center mt-3">Project Details</h1>
                         <hr />
-                        <div className="card px-5 py-5 mx-5 my-5 shadow">
+                        <div className="card px-5 py-5 my-5 shadow">
                             <div className="row my-5">
                                 <div className="col">
                                     <div className="form-outline">
@@ -118,7 +124,8 @@ export function ViewProject() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to={"/"}>Back</Link>
-                                {/*Add a delete and edit button*/}
+                                <Link to={`/editproject/${project.projectId}`} className="btn btn-dark shadow mx-1">Edit Project</Link>
+                                <button onClick={deleteProject(project.projectId)} className="btn btn-danger">Delete</button>
                             </div>
                             <hr className="my-5"/>
                             <div className="card bg-light shadow">
@@ -158,6 +165,5 @@ export function ViewProject() {
                 </div>
             </div>
         </div>
-        </>
     )
 }
