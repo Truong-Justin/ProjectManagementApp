@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 
 
-// Component sends a GET request to GetAllProjects
-// API endpoint and returns all the project objects 
-// to user 
+// Component outputs to the user all project
+// records that exist in the database.
 export function ProjectsIndex() {
     const [projectsList, setProjectsList] = useState(null);
 
@@ -25,6 +24,9 @@ export function ProjectsIndex() {
         }
     }
 
+    // Calls an API endpoint and sets the 
+    // state of the projectsList with all the project records
+    // when the ProjectsIndex component is rendered.
     useEffect(() => {
         async function fetchProjects() {
             try {

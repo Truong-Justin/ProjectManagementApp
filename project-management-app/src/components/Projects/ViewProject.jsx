@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 export function ViewProject() {
     const { projectId } = useParams();
@@ -8,31 +8,45 @@ export function ViewProject() {
     const [projectManager, setProjectManager] = useState({});
     const [bugsList, setBugsList] = useState([]);
     const [employeesList, setEmployeesList]  = useState([]);
+    const navigate = useNavigate();
 
+    // Sends a GET request to get the
+    // selected project for viewing. 
     async function getProject() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetProjectById?projectId=${projectId}`);
         const data = await response.json();
         return data;
     }
 
+    // Sends a GET request to get the 
+    // project manager in charge of
+    // the selected project. 
     async function getProjectManager(project) {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?id=${project.projectManagerId}`);
         const data = await response.json();
         return data;
     }
 
+    // Sends a GET request to get all 
+    // the bugs of the selected project.
     async function getAllBugsForProject() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetAllBugsForProject?projectId=${projectId}`);
         const data = await response.json();
         return data;
     }
 
+    // Sends a GET request to get all
+    // the employees assigned to the 
+    // selected project
     async function getAllEmployeesForProject() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetAllEmployeesForProject?projectId=${projectId}`);
         const data = await response.json();
         return data;
     }
 
+    // Function returns the correct outline
+    // color for the priority level using the 
+    // project object's priority property. 
     function getPriority(project) {
         switch(project.priority) {
             case "Low": 
@@ -44,13 +58,24 @@ export function ViewProject() {
         }
     }
 
-    // Send a POST request to API endpoint
-    // and deletes the project using the 
-    // projectId.
-    function deleteProject(projectId) {
-
+    // Send a DELETE request to API endpoint
+    // to delete the project. Then the user is 
+    // redirected back to the projectsindex page.
+    async function deleteProject() {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/DeleteProject?id=${projectId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify(null)
+        });
+        navigate("/");
     }
 
+    // Sets the state of the project, projectManager, 
+    // bugsList, and employeesList objects when the 
+    // ViewProject component is rendered.
     useEffect(() => {
         async function fetchData() {
             try {
@@ -125,7 +150,7 @@ export function ViewProject() {
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to={"/"}>Back</Link>
                                 <Link to={`/editproject/${project.projectId}`} className="btn btn-dark shadow mx-1">Edit Project</Link>
-                                <button onClick={deleteProject(project.projectId)} className="btn btn-danger">Delete</button>
+                                <button onClick={() => deleteProject()} className="btn btn-danger">Delete</button>
                             </div>
                             <hr className="my-5"/>
                             <div className="card bg-light shadow">

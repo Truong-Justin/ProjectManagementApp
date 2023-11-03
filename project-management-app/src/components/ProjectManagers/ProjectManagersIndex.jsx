@@ -5,12 +5,15 @@ import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 
-// Component sends a GET request to GetAllBugs
-// API endpoint and returns all the project manager objects 
-// to user 
+// Component outputs to the user all project
+// manager records that exist in the database.
 export function ProjectManagersIndex() {
     const [managersList, setManagersList] = useState([]);
 
+    // Calls an API endpoint and sets the 
+    // state of the managersList with all the project 
+    // manager records when the ProjectManagersIndex component 
+    // is rendered.
     useEffect(() => {
         async function fetchManagers() {
             try {

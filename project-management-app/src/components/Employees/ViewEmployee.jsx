@@ -1,30 +1,48 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 export function ViewEmployee() {
     const { employeeId } = useParams();
     const [employee, setEmployee] = useState({});
     const [project, setProject] = useState({});
+    const navigate = useNavigate();
 
+    // Sends a GET request to get the
+    // selected employee for viewing. 
     async function getEmployee() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/GetEmployeeById?id=${employeeId}`);
         const data = await response.json();
         return data;
     }
 
+    // Sends a GET request to get the 
+    // project the selected employee
+    // is assigned to. 
     async function getProject(employee) {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetProjectById?projectId=${employee.projectId}`);
         const data = await response.json();
         return data;
     }
 
-    function deleteEmployee(employeeId) {
-
+     // Send a DELETE request to API endpoint
+    // to delete the employee. Then the user is 
+    // redirected back to the employeesindex page.
+    async function deleteEmployee() {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/DeleteEmployee?id=${employeeId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify(null)
+        });
+        navigate("/employeesindex");
     }
 
     // Sets the state of the employee and
-    // project objects
+    // project objects whenever the ViewEmployee
+    // component is rendered.
     useEffect(() => {
         async function fetchData() {
             const employee = await getEmployee();
@@ -96,7 +114,7 @@ export function ViewEmployee() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/employeesindex">Back</Link>
-                                <button onClick={deleteEmployee(employee.employeeId)} className="btn btn-danger mx-1">Delete</button>
+                                <button onClick={() => deleteEmployee()} className="btn btn-danger mx-1">Delete</button>
                             </div>
                         </div>
                     </div>

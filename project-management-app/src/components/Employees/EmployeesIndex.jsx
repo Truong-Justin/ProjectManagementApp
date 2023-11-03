@@ -5,12 +5,14 @@ import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 
-// Component sends a GET request to GetAllBugs
-// API endpoint and returns all the employees objects 
-// to user 
+// Component outputs to the user all employee records
+// that exist in the database.
 export function EmployeesIndex() {
     const [employeesList, setEmployeesList] = useState(null);
 
+    // Calls an API endpoint and sets the 
+    // state of the employeesList with all the 
+    // employee records when the BugsIndex component is rendered.
     useEffect(() => {
         async function fetchEmployees() {
             try {

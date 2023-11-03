@@ -25,7 +25,7 @@ export function BugsIndex() {
     }
 
     // Calls an API endpoint and sets the 
-    // bugsList with all the bug records
+    // state of the bugsList with all the bug records
     // when the BugsIndex component is rendered.
     useEffect(() => {
         async function fetchBugs() {

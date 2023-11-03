@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 // Component renders the individual bug
 // object the user selected to view.
@@ -8,17 +8,38 @@ export function ViewBug() {
     const { bugId } = useParams();
     const [bug, setBug] = useState({});
     const [project, setProject] = useState({});
+    const navigate = useNavigate();
 
+    // Sends a GET request to get the
+    // selected bug for viewing. 
     async function getBug() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetBugById?id=${bugId}`);
         const bug = await response.json();
         return bug;
     }
 
+    // Sends a GET request to get the
+    // project the selected bug belongs to.
     async function getProject(bug) {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetProjectById?projectId=${bug.projectId}`);
         const project = await response.json();
         return project;
+    }
+
+    // Send a DELETE request to API endpoint
+    // to delete the bug. Then the user is 
+    // redirected back to the bugsindex page.
+    async function deleteBug() {
+        fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/DeleteBug?id=${bugId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify(null)
+        });
+        navigate("/bugsindex");
+        
     }
 
     // Function returns the correct outline
@@ -33,12 +54,6 @@ export function ViewBug() {
             case "High": 
                 return <p className="card-text blink" id="high-priority">{bug.priority} Priority</p>
         }
-    }
-
-    // Send a POST request to API endpoint
-    // and delete the bug using the bugId.
-    function deleteBug(bugId) {
-
     }
 
     // Sets the state of the bug and project
@@ -112,7 +127,7 @@ export function ViewBug() {
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/bugsindex">Back</Link>
                                 <Link className="btn btn-dark shadow mx-1" to={`/editbug/${bug.bugId}`}>Edit Bug</Link>
-                                <button onClick={deleteBug(bug.bugId)} className="btn btn-danger">Delete</button>
+                                <button onClick={() => deleteBug()} className="btn btn-danger">Delete</button>
                             </div>
                         </div>
                     </div>

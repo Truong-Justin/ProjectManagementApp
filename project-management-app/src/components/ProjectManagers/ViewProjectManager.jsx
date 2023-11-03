@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 export function ViewProjectManager() {
     const { projectManagerId } = useParams();
     const [projectManager, setProjectManager] = useState({});
     const [projectsList, setProjectsList] = useState([]);
+    const navigate = useNavigate();
 
     async function getProjectManager() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?id=${projectManagerId}`);
@@ -19,10 +20,24 @@ export function ViewProjectManager() {
         return data;
     }
 
-    function deleteManager(projectManagerId) {
-
+     // Send a DELETE request to API endpoint
+    // to delete the project manager. Then the user is 
+    // redirected back to the projectmanagersindex page.
+    async function deleteManager() {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/DeleteProjectManager?id=${projectManagerId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify(null)
+        });
+        navigate("/projectmanagersindex");
     }
 
+    // Sets the state of the projectManager object and the
+    // projectsList whenever the ViewProjectManager
+    // component is rendered.
     useEffect(() => {
         async function fetchData() {
             const projectManager = await getProjectManager();
@@ -87,7 +102,7 @@ export function ViewProjectManager() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/projectmanagersindex">Back</Link>
-                                <button onClick={deleteManager(projectManager.projectManagerId)} className="btn btn-danger mx-1">Delete</button>
+                                <button onClick={() => deleteManager()} className="btn btn-danger mx-1">Delete</button>
                             </div>
                             <hr className="my-5"/>
                             <div className="card bg-light shadow">
