@@ -5,6 +5,7 @@ import { ProjectsIndex } from './Projects/ProjectsIndex';
 import { ViewProject } from './Projects/ViewProject';
 import { BugsIndex} from './Bugs/BugsIndex';
 import { ViewBug } from './Bugs/ViewBug';
+import { AddBug } from './Bugs/AddBug';
 import { EmployeesIndex } from './Employees/EmployeesIndex';
 import { ViewEmployee } from './Employees/ViewEmployee';
 import { ProjectManagersIndex } from './ProjectManagers/ProjectManagersIndex';
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/viewproject/:projectId" element={<ViewProject />} />
                     <Route path="/bugsindex" element={<BugsIndex />} />
                     <Route path="/viewbug/:bugId" element={<ViewBug />} />
+                    <Route path="/addbug" element={<AddBug />}></Route>
                     <Route path="/employeesindex" element={<EmployeesIndex />} />
                     <Route path="/viewemployee/:employeeId" element={<ViewEmployee />} />
                     <Route path="/projectmanagersindex" element={<ProjectManagersIndex />} />

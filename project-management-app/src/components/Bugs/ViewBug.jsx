@@ -30,11 +30,10 @@ export function ViewBug() {
     // to delete the bug. Then the user is 
     // redirected back to the bugsindex page.
     async function deleteBug() {
-        fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/DeleteBug?id=${bugId}`, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/DeleteBug?id=${bugId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-                
             },
             body: JSON.stringify(null)
         });

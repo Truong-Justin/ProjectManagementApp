@@ -27,8 +27,7 @@ export function ViewProjectManager() {
         await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/DeleteProjectManager?id=${projectManagerId}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
-                
+                'Content-Type': 'application/json'      
             },
             body: JSON.stringify(null)
         });

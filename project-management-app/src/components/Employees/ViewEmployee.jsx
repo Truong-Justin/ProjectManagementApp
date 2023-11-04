@@ -32,8 +32,7 @@ export function ViewEmployee() {
         await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/DeleteEmployee?id=${employeeId}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
-                
+                'Content-Type': 'application/json'  
             },
             body: JSON.stringify(null)
         });

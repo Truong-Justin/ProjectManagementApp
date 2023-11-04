@@ -129,7 +129,7 @@ img {
     display: inline-flex;
 }
 
-select {
+.center-select-options {
     text-align-last: center;
 }
 
