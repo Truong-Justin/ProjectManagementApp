@@ -54,6 +54,9 @@ export function ProjectManagersIndex() {
                        <span className="visually-hidden">Loading...</span>
                    </Spinner>)}
             </div>
+            <div className="text-center">
+                <Link to="/addprojectmanager" className="my-5 btn btn-md btn-secondary shadow">+ Add a project manager</Link>
+            </div>
         </div>
     )
 }

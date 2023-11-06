@@ -3,13 +3,17 @@ import '../App.css';
 import { Layout } from './Layout.jsx'; 
 import { ProjectsIndex } from './Projects/ProjectsIndex';
 import { ViewProject } from './Projects/ViewProject';
+import { AddProject } from './Projects/AddProject';
 import { BugsIndex} from './Bugs/BugsIndex';
 import { ViewBug } from './Bugs/ViewBug';
+import { EditBug} from './Bugs/EditBug';
 import { AddBug } from './Bugs/AddBug';
 import { EmployeesIndex } from './Employees/EmployeesIndex';
 import { ViewEmployee } from './Employees/ViewEmployee';
+import { AddEmployee } from './Employees/AddEmployee';
 import { ProjectManagersIndex } from './ProjectManagers/ProjectManagersIndex';
 import { ViewProjectManager } from './ProjectManagers/ViewProjectManager';
+import { AddProjectManager } from './ProjectManagers/AddProjectManager';
 
 function App() {
     return (
@@ -18,13 +22,17 @@ function App() {
                 <Route element={<Layout />} >
                     <Route path="/" element={<ProjectsIndex />} />
                     <Route path="/viewproject/:projectId" element={<ViewProject />} />
+                    <Route path="/addproject" element={<AddProject />} />
                     <Route path="/bugsindex" element={<BugsIndex />} />
                     <Route path="/viewbug/:bugId" element={<ViewBug />} />
+                    <Route path="/editbug/:bugId" element={<EditBug />} />
                     <Route path="/addbug" element={<AddBug />}></Route>
                     <Route path="/employeesindex" element={<EmployeesIndex />} />
                     <Route path="/viewemployee/:employeeId" element={<ViewEmployee />} />
+                    <Route path="/addemployee" element={<AddEmployee />} />
                     <Route path="/projectmanagersindex" element={<ProjectManagersIndex />} />
                     <Route path="/viewprojectmanager/:projectManagerId" element={<ViewProjectManager />} />
+                    <Route path="/addprojectmanager" element={<AddProjectManager />} />
                 </Route>
             </Routes>
         </Router>

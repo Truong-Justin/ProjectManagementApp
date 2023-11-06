@@ -41,7 +41,7 @@ export function ProjectsIndex() {
     },[])
 
     return (
-        <div className="container" style={{display: 'flex'}}>
+        <div className="container">
             <div className="row my-5 d-sm-inline-flex d-none">
             {projectsList ? ( projectsList.map(project => {
                 return (
@@ -67,6 +67,9 @@ export function ProjectsIndex() {
             })) : (<Spinner className="center-loader" animation="border" role="status">
                        <span className="visually-hidden">Loading...</span>
                    </Spinner>)}
+            </div>
+            <div className="text-center">
+                <Link to="/AddProject" className="my-5 btn btn-md btn-secondary shadow">+ Add a project</Link>
             </div>
         </div>
     )

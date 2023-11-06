@@ -53,6 +53,9 @@ export function EmployeesIndex() {
                        <span className="visually-hidden">Loading...</span>
                    </Spinner>)}
             </div>
+            <div className="text-center">
+                <Link to="/addemployee" className="my-5 btn btn-md btn-secondary shadow">+ Add an employee</Link>
+            </div>
         </div>
     )
 }

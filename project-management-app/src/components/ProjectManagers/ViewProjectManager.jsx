@@ -48,7 +48,6 @@ export function ViewProjectManager() {
         fetchData();
     },[])
 
-
     return (
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
