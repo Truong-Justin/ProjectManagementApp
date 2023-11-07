@@ -14,6 +14,7 @@ import { AddEmployee } from './Employees/AddEmployee';
 import { ProjectManagersIndex } from './ProjectManagers/ProjectManagersIndex';
 import { ViewProjectManager } from './ProjectManagers/ViewProjectManager';
 import { AddProjectManager } from './ProjectManagers/AddProjectManager';
+import { EditProjectManager } from './ProjectManagers/EditProjectManager';
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/projectmanagersindex" element={<ProjectManagersIndex />} />
                     <Route path="/viewprojectmanager/:projectManagerId" element={<ViewProjectManager />} />
                     <Route path="/addprojectmanager" element={<AddProjectManager />} />
+                    <Route path="/editprojectmanager" element={<EditProjectManager />} />
                 </Route>
             </Routes>
         </Router>

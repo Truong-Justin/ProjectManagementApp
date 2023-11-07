@@ -97,6 +97,7 @@ export function ViewProject() {
     },[])
 
     return (
+        <>
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -157,6 +158,7 @@ export function ViewProject() {
                                     <div className="col px-5">
                                         <div className="form-outline">
                                             <h3 className="text-decoration-underline">Project Bugs</h3>
+                                            {bugsList.length == 0 ? <p className="text-primary">There are no bugs</p> : <></> }
                                             <ol>
                                                 {bugsList.map(bug => {
                                                     return (
@@ -171,6 +173,7 @@ export function ViewProject() {
                                     <div className="col px-5">
                                         <div className="form-outline">
                                             <h3 className="text-decoration-underline">Assigned Employees</h3>
+                                            {employeesList.length == 0 ? <p className="text-primary">No employees are assigned yet.</p> : <></> }
                                             <ol>
                                                 {employeesList.map(employee => {
                                                     return (
@@ -189,5 +192,7 @@ export function ViewProject() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
 }

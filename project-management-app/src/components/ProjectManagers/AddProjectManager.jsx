@@ -14,8 +14,7 @@ export function AddProjectManager() {
     // endpoint when the user submits the 
     // form data using the submit button.
     const onSubmit = async (data) => {
-        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/AddProjectManager?FirstName=${data.firstName}&LastName=${data.lastName}"&HireDate=${data.date}&Phone=${data.phone}&Zip=${data.zip}&Address=${data.address}
-        `, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/AddProjectManager?FirstName=${data.firstName}&LastName=${data.lastName}"&HireDate=${data.date}&Phone=${data.phone}&Zip=${data.zip}&Address=${data.address}`, {
             method: "POST"
         });
         navigate('/projectmanagersindex');

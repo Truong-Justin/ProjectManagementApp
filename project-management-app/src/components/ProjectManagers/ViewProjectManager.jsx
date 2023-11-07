@@ -100,7 +100,8 @@ export function ViewProjectManager() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/projectmanagersindex">Back</Link>
-                                <button onClick={() => deleteManager()} className="btn btn-danger mx-1">Delete</button>
+                                <Link className="btn btn-dark shadow mx-1" to="/editprojectmanager" state={{projectManager}}>Edit Manager</Link>
+                                <button onClick={() => deleteManager()} className="btn btn-danger">Delete</button>
                             </div>
                             <hr className="my-5"/>
                             <div className="card bg-light shadow">
