@@ -37,7 +37,7 @@ export function ViewProject() {
 
     // Sends a GET request to get all
     // the employees assigned to the 
-    // selected project
+    // selected project.
     async function getAllEmployeesForProject() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/GetAllEmployeesForProject?projectId=${projectId}`);
         const data = await response.json();

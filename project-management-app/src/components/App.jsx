@@ -26,7 +26,7 @@ function App() {
                     <Route path="/addproject" element={<AddProject />} />
                     <Route path="/bugsindex" element={<BugsIndex />} />
                     <Route path="/viewbug/:bugId" element={<ViewBug />} />
-                    <Route path="/editbug/:bugId" element={<EditBug />} />
+                    <Route path="/editbug" element={<EditBug />} />
                     <Route path="/addbug" element={<AddBug />}></Route>
                     <Route path="/employeesindex" element={<EmployeesIndex />} />
                     <Route path="/viewemployee/:employeeId" element={<ViewEmployee />} />

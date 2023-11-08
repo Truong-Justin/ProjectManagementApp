@@ -8,12 +8,17 @@ export function ViewProjectManager() {
     const [projectsList, setProjectsList] = useState([]);
     const navigate = useNavigate();
 
+    // Sends a GET request to get the selected
+    // project manager for viewing. 
     async function getProjectManager() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?id=${projectManagerId}`);
         const data = response.json();
         return data;
     }
 
+    // Sends a GET request to get all projects
+    // that the selected project manager is in 
+    // charge of.
     async function getProjectsForManager() {
         const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetAllProjectsForManager?projectManagerId=${projectManagerId}`);
         const data = response.json();
