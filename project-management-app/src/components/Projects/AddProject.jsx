@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
-import Select from 'react-select';
 
 // Component allows a user to add a new 
 // project record to the database by using sending
@@ -10,7 +9,11 @@ import Select from 'react-select';
 export function AddProject() {
     const [projectManagersList, setProjectManagers] = useState([]);
     const navigate = useNavigate();
-    const {register, handleSubmit, formState: { errors },} = useForm();
+    const {
+        register, 
+        handleSubmit, 
+        formState: { errors },
+    } = useForm();
 
     // Sends a GET request to get all the 
     // project manager names from the 
@@ -36,13 +39,73 @@ export function AddProject() {
     // menu that a user can select project managers from.
     useEffect(() => {
         async function fetchData() {
-            const projectManagerNames = await getProjectManagerNames();
-            setProjectManagers(projectManagerNames);
+            try {
+                const projectManagerNames = await getProjectManagerNames();
+                setProjectManagers(projectManagerNames);
+            } catch(error) {
+                console.log(error)
+            }
         }
         fetchData();
     },[])
 
     return (
+        <>
+        {/*Mobile UI*/}
+        {/* <div className="container d-sm-none">
+            <div className="my-5 mx-auto">
+                <div className="card shadow bg-light">
+                    <div className="col-md-11 mx-auto">
+                        <h1 className="mt-3 text-center text-decoration-underline">Add Project</h1>
+                        <hr />
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="card px-3 py-3 mx-3 my-4 shadow">
+                                <div className="row mt-5">
+                                    <div className="col text-center mx-auto">
+                                        <h4 className="text-decoration-underline text-center">Project Title</h4>
+                                        <textarea placeholder="Enter a project title." rows="2" type="text" name="projectTitle" {...register("projectTitle")} className="form-control mx-auto text-center w-75"></textarea>
+                                    </div>
+                                </div>
+                                <div className="row mt-5">
+                                    <h4 className="text-decoration-underline text-center">Project Manager Assignment</h4>
+                                    <select className="form-control shadow w-75 center-select-options mx-auto" name="projectManager" {...register("projectManager")}>
+                                        <option value="">Select a manager to assign</option>
+                                        {projectManagersList.map(projectManager => {
+                                            return <option key={projectManager.value} value={projectManager.value}>{projectManager.text}</option>
+                                        })}
+                                    </select>
+                                    {errors.projectManager?.type === "required" && (
+                                        <p className="errorMsg text-danger">A project manager must be assigned.</p>
+                                    )}
+                                </div>
+                                <div className="row mt-5">
+                                    <h4 className="text-decoration-underline text-center">Start Date</h4>
+                                    <input type="date" name="date" {...register("date")} className="shadow form-control w-75 mx-auto text-center" />
+                                </div>
+                                <div className="row mt-5">
+                                    <h4 className="text-decoration-underline text-center">Priority</h4>
+                                    <select name="priority" {...register("priority")} className="form-control shadow w-75 center-select-options mx-auto">
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                                <div className="row my-5">
+                                    <h4 className="text-decoration-underline text-center">Description</h4>
+                                    <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description")} className="form-control mx-auto text-center w-75"></textarea>
+                                </div>
+                                <hr />
+                                <div className="text-center">
+                                    <Link to="/projectsindex" className="btn btn-secondary">Back</Link>
+                                    <input type="submit" value="Add Project" className="btn btn-primary shadow mx-1" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> */}
+        {/*Desktop UI*/}
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -65,7 +128,7 @@ export function AddProject() {
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Project Manager Assignment</h4>
                                             <select name="projectManager" {...register("projectManager", {required: true})} className="form-control bg-light shadow w-75">
-                                                <option value="">Select a project manager</option>
+                                                <option value="">Select a project manager to assign</option>
                                                 {projectManagersList.map(projectManager => {
                                                     return <option key={projectManager.value} value={projectManager.value}>{projectManager.text}</option>
                                                 })}
@@ -116,7 +179,6 @@ export function AddProject() {
                 </div>
             </div>
         </div>
+        </>
     )
-
-
 }

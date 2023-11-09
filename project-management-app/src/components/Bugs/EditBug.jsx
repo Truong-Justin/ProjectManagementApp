@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 
-// Component will let the user 
+// Component lets the user 
 // perform a full or partial
 // update of a selected bug record.
 export function EditBug() {
@@ -11,7 +11,13 @@ export function EditBug() {
     const { bug } = location.state;
     const [employeesList, setEmployeesList] = useState([]);
     const navigate = useNavigate();
-    const {register, handleSubmit, formState: { errors },} = useForm({ defaultValues: { assignment: `${bug.assignment}` }});
+    const {
+        register, 
+        handleSubmit, 
+        formState: { errors },
+    } = useForm({ defaultValues: {priority: bug.priority,
+                                  assignment: bug.assignment,
+                                  description: bug.description}});
 
     // Sends a GET request to get all
     // the employee first and last names
@@ -23,8 +29,8 @@ export function EditBug() {
     }
 
     // Sends a PUT request to the API
-    // endpoint when the user submits 
-    // the form data using the submit button.
+    // endpoint to perform a full or 
+    // partial update of the chosen record.
     const onSubmit = async (data) => {
         await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/UpdateBug?id=${bug.bugId}&description=${data.description}&priority=${data.priority}&assignment=${data.assignment}`, {
             method: "PUT"
@@ -61,7 +67,7 @@ export function EditBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Priority</h4>
-                                            <select name="priority" {...register("priority")} defaultValue={bug.priority} className="form-control shadow w-75">
+                                            <select name="priority" {...register("priority")} className="form-control shadow w-75 bg-light">
                                                 <option value="Low">Low</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="High">High</option>
@@ -71,7 +77,7 @@ export function EditBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Assignment</h4>
-                                            <select name="assignment" {...register("assignment")} className="form-control shadow w-75">
+                                            <select name="assignment" {...register("assignment")} className="form-control shadow w-75 bg-light">
                                                 <option value={bug.assignment}>Select an employee to re-assign</option>
                                                 {employeesList.map(employee => {
                                                     return <option key={employee.value} value={employee.text}>{employee.text}</option>
@@ -83,14 +89,14 @@ export function EditBug() {
                                 <div className="row my-5">
                                     <div className="form-outline">
                                         <h4 className="text-decoration-underline">Description</h4>
-                                        <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description", {required: true})} defaultValue={bug.description} className="form-control shadow"></textarea>
+                                        <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description", {required: true})} className="form-control shadow"></textarea>
                                         {errors.description?.type === "required" && (
                                             <p className="errorMsg text-danger">A description is required.</p>
                                         )}
                                     </div>
                                 </div>
                                 <div className="mt-5">
-                                    <Link to={'/bugsindex'} className="btn btn-secondary shadow">Back</Link>
+                                    <Link to={`/viewbug/${bug.bugId}`} className="btn btn-secondary">Back</Link>
                                     <input type="submit" value="Save" className="btn btn-primary shadow mx-1" />
                                 </div>
                             </div>

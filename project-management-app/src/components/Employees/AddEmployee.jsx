@@ -9,7 +9,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 export function AddEmployee() {
     const [projectsList, setProjectsList] = useState([]);
     const navigate = useNavigate();
-    const {register, handleSubmit, formState: { errors },} = useForm();
+    const {
+        register, 
+        handleSubmit, 
+        formState: { errors },
+    } = useForm();
 
     // Sends a GET request to get all the 
     // project titles from the projects table. 

@@ -149,7 +149,7 @@ export function ViewProject() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to={"/"}>Back</Link>
-                                <Link to={`/editproject/${project.projectId}`} className="btn btn-dark shadow mx-1">Edit Project</Link>
+                                <Link to={`/editproject`} state={{project}} className="btn btn-dark shadow mx-1">Edit Project</Link>
                                 <button onClick={() => deleteProject()} className="btn btn-danger">Delete</button>
                             </div>
                             <hr className="my-5"/>

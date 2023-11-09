@@ -10,7 +10,11 @@ export function AddBug() {
     const [projectsList, setProjectsList] = useState([]);
     const [employeesList, setEmployeesList] = useState([]);
     const navigate = useNavigate();
-    const {register, handleSubmit, formState: { errors },} = useForm();
+    const {
+        register, 
+        handleSubmit, 
+        formState: { errors },
+    } = useForm();
 
     // Sends a GET request to get all
     // the project titles within the 

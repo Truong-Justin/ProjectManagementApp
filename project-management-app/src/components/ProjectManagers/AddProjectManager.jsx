@@ -8,7 +8,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 // sending a POST request to the API endpoint.
 export function AddProjectManager() {
     const navigate = useNavigate();
-    const {register, handleSubmit, formState: { errors },} = useForm();
+    const {
+        register, 
+        handleSubmit, 
+        formState: { errors },
+    } = useForm();
 
     // Sends a POST request to the API
     // endpoint when the user submits the 
@@ -74,7 +78,7 @@ export function AddProjectManager() {
                                 <hr />
                                 <div>
                                     <Link to={"/projectmanagersindex"} className="btn btn-secondary">Back</Link>
-                                    <input type="submit" value="Save" className="btn btn-primary shadow mx-1" />
+                                    <input type="submit" value="Submit" className="btn btn-primary shadow mx-1" />
                                 </div>
                             </div>
                         </form>

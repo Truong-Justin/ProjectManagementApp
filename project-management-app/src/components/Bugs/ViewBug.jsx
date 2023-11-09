@@ -38,7 +38,6 @@ export function ViewBug() {
             body: JSON.stringify(null)
         });
         navigate("/bugsindex");
-        
     }
 
     // Function returns the correct outline

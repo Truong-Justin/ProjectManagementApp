@@ -8,7 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 // Component outputs to the user all project
 // manager records that exist in the database.
 export function ProjectManagersIndex() {
-    const [managersList, setManagersList] = useState([]);
+    const [managersList, setManagersList] = useState(null);
 
     // Calls an API endpoint and sets the 
     // state of the managersList with all the project 

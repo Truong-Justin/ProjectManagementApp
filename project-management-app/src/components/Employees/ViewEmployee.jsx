@@ -113,7 +113,8 @@ export function ViewEmployee() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/employeesindex">Back</Link>
-                                <button onClick={() => deleteEmployee()} className="btn btn-danger mx-1">Delete</button>
+                                <Link to="/editemployee" state={{employee}} className="btn btn-dark mx-1">Edit Employee</Link>
+                                <button onClick={() => deleteEmployee()} className="btn btn-danger">Delete</button>
                             </div>
                         </div>
                     </div>
