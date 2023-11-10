@@ -32,16 +32,16 @@ export function EmployeesIndex() {
             {employeesList ? ( employeesList.map(employee => {
                 return (
                     <div className="col-md-4 mb-3" key={employee.employeeId}>
-                        <div className="card mb-3 shadow bg-light">
+                        <div className="card mb-3 shadow" id="card-color-transition">
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img src={Person} className="img-fluid center-image" alt="lightbulb picture"></img>
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title" id="text-underline">{employee.firstName} {employee.lastName}</h5>
-                                        <p className="card-text">Employee Id: {employee.employeeId}</p>
-                                        <p className="card-text"><small className="text-muted">Hire Date: {employee.hireDate}</small></p>
+                                        <h5 className="card-title card-text-color" id="text-underline">{employee.firstName} {employee.lastName}</h5>
+                                        <p className="card-text card-text-color">Employee Id: {employee.employeeId}</p>
+                                        <p className="card-text"><small className="card-date-color">Hire Date: {employee.hireDate}</small></p>
                                     </div>
                                 </div>
                             </div>

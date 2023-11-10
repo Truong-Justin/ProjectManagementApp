@@ -16,11 +16,11 @@ export function ProjectsIndex() {
     function getPriority(project) {
         switch(project.priority) {
             case "Low": 
-                return <p className="card-text blink" id="low-priority">{project.priority} Priority</p>
+                return <p className="card-text shadow blink" id="low-priority">{project.priority} Priority</p>
             case "Medium":
-                return <p className="card-text blink" id="medium-priority">{project.priority} Priority</p>
+                return <p className="card-text shadow blink" id="medium-priority">{project.priority} Priority</p>
             case "High": 
-                return <p className="card-text blink" id="high-priority">{project.priority} Priority</p>
+                return <p className="card-text shadow blink" id="high-priority">{project.priority} Priority</p>
         }
     }
 
@@ -46,16 +46,16 @@ export function ProjectsIndex() {
             {projectsList ? ( projectsList.map(project => {
                 return (
                     <div className="col-md-4 mb-3" key={project.projectId}>
-                        <div className="card mb-3 shadow bg-light">
+                        <div className="card mb-3 shadow" id="card-color-transition">
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img src={Project} className="img-fluid center-image" alt="project picture"></img>
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title" id="text-underline">{project.projectTitle.substring(0, 40)}...</h5>
-                                        <p className="card-text" >{project.description.substring(0, 70)}...</p>
-                                        <p className="card-text"><small className="text-muted">Date Submitted: {project.date}</small></p>
+                                        <h5 className="card-title card-text-color" id="text-underline">{project.projectTitle.substring(0, 40)}...</h5>
+                                        <p className="card-text card-text-color">{project.description.substring(0, 70)}...</p>
+                                        <p className="card-text"><small className="card-date-color">Date Submitted: {project.date}</small></p>
                                         {getPriority(project)}
                                         <Link to={`/viewproject/${project.projectId}`} state={{project}} className="card-link"></Link>
                                     </div>

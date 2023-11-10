@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import 'react-datepicker/dist/react-datepicker.css';
 
 // Component allows a user to add a new 
 // bug record to the database by using sending
@@ -66,6 +65,7 @@ export function AddBug() {
     },[])
 
     return (
+        <>
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -144,6 +144,8 @@ export function AddBug() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
     
 }

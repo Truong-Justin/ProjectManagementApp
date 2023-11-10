@@ -1,6 +1,5 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import 'react-datepicker/dist/react-datepicker.css';
 
 // Component lets the user 
 // perform a full or partial
@@ -29,6 +28,7 @@ export function EditProjectManager() {
     }
 
     return (
+        <>
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -78,5 +78,7 @@ export function EditProjectManager() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
 }

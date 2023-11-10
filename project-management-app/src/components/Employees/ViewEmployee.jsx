@@ -54,6 +54,7 @@ export function ViewEmployee() {
     },[])
 
     return (
+        <>
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -123,5 +124,7 @@ export function ViewEmployee() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
 }

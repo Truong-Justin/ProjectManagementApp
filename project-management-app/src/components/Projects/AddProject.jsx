@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import 'react-datepicker/dist/react-datepicker.css';
 
 // Component allows a user to add a new 
 // project record to the database by using sending
@@ -179,6 +178,7 @@ export function AddProject() {
                 </div>
             </div>
         </div>
+        <hr />
         </>
     )
 }

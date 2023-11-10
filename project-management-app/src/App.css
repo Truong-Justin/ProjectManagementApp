@@ -83,10 +83,12 @@ img {
 .card:hover img{
     transform: scale(1.5);
     transition-duration: .5s;
+    filter: invert(90%);
 }
 
 .blink {
     animation: blink 1.5s linear 5;
+
 }
 
 @keyframes blink {
@@ -144,4 +146,31 @@ img {
 .center-loader {
     position: absolute;
     left: 50%;
+}
+
+#card-color-transition {
+    background-color: #f8f9fa;
+    transition-duration: .25s;
+    color: black;
+}
+
+#card-color-transition:hover {
+    background-color: #6c757d;
+    border-radius: 5%;
+}
+
+#card-color-transition:hover .card-text-color {
+    color: #f8f9fa;
+}
+
+#card-color-transition:hover .card-date-color {
+    color: rgb(197, 197, 198);
+}
+
+.card-date-color {
+    color: #6c757d;
+}
+
+.card-text-color {
+    color: black;
 }

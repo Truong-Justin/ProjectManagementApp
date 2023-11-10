@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import 'react-datepicker/dist/react-datepicker.css';
 
 // Component allows a user to add a new 
 // project manager record to the database by 
@@ -25,6 +24,7 @@ export function AddProjectManager() {
     }
 
     return (
+        <>
         <div className="container">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -86,5 +86,7 @@ export function AddProjectManager() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
 }

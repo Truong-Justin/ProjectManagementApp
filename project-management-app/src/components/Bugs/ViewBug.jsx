@@ -73,6 +73,7 @@ export function ViewBug() {
     },[])
 
     return (
+        <>
         <div className="container d-none d-sm-none d-md-block">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -84,7 +85,7 @@ export function ViewBug() {
                                 <div className="col">
                                     <div className="form-outline">
                                         <h3 className="text-decoration-underline">Project</h3>
-                                        <Link to={`/viewproject/${bug.projectId}`}>{project.projectTitle}</Link>
+                                        <Link to={`/viewproject/${bug.projectId}`} className="pe-5">{project.projectTitle}</Link>
                                     </div>
                                 </div>
                                 <div className="col">
@@ -134,5 +135,7 @@ export function ViewBug() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
 }

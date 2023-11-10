@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import 'react-datepicker/dist/react-datepicker.css';
 
 // Component allows a user to add a new 
 // employee record to the database by using sending
@@ -49,6 +48,7 @@ export function AddEmployee() {
     },[])
 
     return (
+        <>
         <div className="container">
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
@@ -123,5 +123,7 @@ export function AddEmployee() {
                 </div>
             </div>
         </div>
+        <hr />
+        </>
     )
 }

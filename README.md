@@ -2,7 +2,7 @@
 ---
 
 ## Project Description
-A full-stack web application that lets a user manage projects, bugs, project managers, and employees. The app shows a list of `employees and bugs that belong to a selected project`, the `projects a project manager is in charge of`, and the `project an employee is assigned to`. This app utilizes a REST API made with C# and ASP.NET Core Web API that handles the back-end services, and a ReactJS front-end that lets the user: create, read, update, and delete records from a Microsoft SQL Server database hosted on Azure SQL. React-Hook-Forms was used to collect the user inputted data using a form and sent to the REST API using the built-in JavaScript Fetch API, and React-Router was used to handle navigation between the different pages within the application. 
+A full-stack web application that lets a user manage projects, bugs, project managers, and employees. The app shows a list of `employees` and `bugs` that belong to a `selected project`, the `projects` a `project manager` is in charge of, and the `project` an `employee` is assigned to. This app utilizes a REST API made with C# and ASP.NET Core Web API that handles the back-end services, and a ReactJS front-end that lets the user: create, read, update, and delete records from a Microsoft SQL Server database hosted on Azure SQL. React-Hook-Forms was used to collect the user inputted data using a form and sent to the REST API using the built-in JavaScript Fetch API, and React-Router was used to handle navigation between the different pages within the application. 
 
 
 ---

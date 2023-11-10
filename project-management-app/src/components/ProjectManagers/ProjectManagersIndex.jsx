@@ -33,16 +33,16 @@ export function ProjectManagersIndex() {
             {managersList ? ( managersList.map(projectManager => {
                 return (
                     <div className="col-md-4 mb-3" key={projectManager.projectManagerId}>
-                        <div className="card mb-3 shadow bg-light">
+                        <div className="card mb-3 shadow" id="card-color-transition">
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img src={Person} className="img-fluid center-image" alt="lightbulb picture"></img>
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title" id="text-underline">{projectManager.firstName} {projectManager.lastName}</h5>
-                                        <p className="card-text">Manager Id: {projectManager.projectManagerId}</p>
-                                        <p className="card-text"><small className="text-muted">Hire Date: {projectManager.hireDate}</small></p>
+                                        <h5 className="card-title card-text-color" id="text-underline">{projectManager.firstName} {projectManager.lastName}</h5>
+                                        <p className="card-text card-text-color">Manager Id: {projectManager.projectManagerId}</p>
+                                        <p className="card-text"><small className="card-date-color">Hire Date: {projectManager.hireDate}</small></p>
                                     </div>
                                 </div>
                             </div>
