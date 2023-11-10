@@ -124,6 +124,8 @@ export function ViewBug() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/bugsindex">Back</Link>
+                                {/*Pass the bug object to the EditBug component so we won't have to 
+                                make another GET request to get the selected bugs's data.*/}
                                 <Link className="btn btn-dark shadow mx-1" to={'/editbug'} state={{bug}}>Edit Bug</Link>
                                 <button onClick={() => deleteBug()} className="btn btn-danger">Delete</button>
                             </div>

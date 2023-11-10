@@ -105,6 +105,8 @@ export function ViewProjectManager() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/projectmanagersindex">Back</Link>
+                                {/*Pass the projectManager object to the EditProjectManager component 
+                                so we won't have tomake another GET request to get the selected project manager's data.*/}
                                 <Link className="btn btn-dark shadow mx-1" to="/editprojectmanager" state={{projectManager}}>Edit Manager</Link>
                                 <button onClick={() => deleteManager()} className="btn btn-danger">Delete</button>
                             </div>
@@ -114,6 +116,9 @@ export function ViewProjectManager() {
                                     <div className="col px-5">
                                         <div className="form-outline">
                                             <h3 className="text-decoration-underline">Projects In-Charge Of</h3>
+                                            {/*If there are employees assigned to this project, output a list of the employees.
+                                            If there are no employees assigned, let the user know so.*/}
+                                            {projectsList.length == 0 ? <p className="text-primary">No projects assigned yet.</p> : 
                                             <ol>
                                                 {projectsList.map(project => {
                                                     return (
@@ -123,6 +128,7 @@ export function ViewProjectManager() {
                                                     )
                                                 })}
                                             </ol>
+                                            }
                                         </div>
                                     </div>
                                 </div>

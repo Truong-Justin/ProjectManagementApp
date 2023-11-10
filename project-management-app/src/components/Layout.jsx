@@ -23,7 +23,7 @@ export function Layout() {
                             <a href="https://www.justintruong.studio" className="nav-link text-light">Portfolio</a>
                         </li>
                         <li className="nav-item">
-                            <a href="https://github.com/Truong-Justin/BugTracker" className="nav-link text-light">GitHub</a>
+                            <a href="https://github.com/Truong-Justin/ProjectManagementApp" className="nav-link text-light">GitHub</a>
                         </li>
                     </ul>
                 </div>
@@ -41,8 +41,9 @@ export function Layout() {
                 <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/EmployeesIndex'}>Employees</Link>
                 <Link className="text-light btn btn-sm btn-secondary shadow mx-1" to={'/ProjectManagersIndex'}>Managers</Link>
             </div>
+            <Outlet />
         </div>
-        <Outlet />
+       
     </>
     )
 }

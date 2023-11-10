@@ -113,6 +113,8 @@ export function ViewEmployee() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to="/employeesindex">Back</Link>
+                                {/*Pass the project object to the EditEmployee component so we won't have to 
+                                make another GET request to get the selected employee's data.*/}
                                 <Link to="/editemployee" state={{employee}} className="btn btn-dark mx-1">Edit Employee</Link>
                                 <button onClick={() => deleteEmployee()} className="btn btn-danger">Delete</button>
                             </div>

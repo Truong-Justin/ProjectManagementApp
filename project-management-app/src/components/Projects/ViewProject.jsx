@@ -149,6 +149,8 @@ export function ViewProject() {
                             </div>
                             <div className="mt-5">
                                 <Link className="btn btn-secondary shadow" to={"/"}>Back</Link>
+                                {/*Pass the project object to the EditProject component so we won't have to 
+                                make another GET request to get the selected project's data.*/}
                                 <Link to={`/editproject`} state={{project}} className="btn btn-dark shadow mx-1">Edit Project</Link>
                                 <button onClick={() => deleteProject()} className="btn btn-danger">Delete</button>
                             </div>
@@ -158,7 +160,9 @@ export function ViewProject() {
                                     <div className="col px-5">
                                         <div className="form-outline">
                                             <h3 className="text-decoration-underline">Project Bugs</h3>
-                                            {bugsList.length == 0 ? <p className="text-primary">There are no bugs</p> : <></> }
+                                            {/*If this project has any bugs logged, output a list of the bugs.
+                                            If there are no bugs, let the user know so.*/}
+                                            {bugsList.length == 0 ? <p className="text-primary">There are no bugs</p> : 
                                             <ol>
                                                 {bugsList.map(bug => {
                                                     return (
@@ -167,13 +171,15 @@ export function ViewProject() {
                                                         </li>
                                                     )
                                                 })}
-                                            </ol>
+                                            </ol> }
                                         </div>
                                     </div>
                                     <div className="col px-5">
                                         <div className="form-outline">
                                             <h3 className="text-decoration-underline">Assigned Employees</h3>
-                                            {employeesList.length == 0 ? <p className="text-primary">No employees are assigned yet.</p> : <></> }
+                                            {/*If there are employees assigned to this project, output a list of the employees.
+                                            If there are no employees assigned, let the user know so.*/}
+                                            {employeesList.length == 0 ? <p className="text-primary">No employees are assigned yet.</p> :
                                             <ol>
                                                 {employeesList.map(employee => {
                                                     return (
@@ -182,7 +188,7 @@ export function ViewProject() {
                                                         </li>
                                                     )
                                                 })}
-                                            </ol>
+                                            </ol> }
                                         </div>
                                     </div>
                                 </div>
