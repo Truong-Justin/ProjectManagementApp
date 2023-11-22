@@ -35,7 +35,7 @@ export function EmployeesIndex() {
                         <div className="card mb-3 shadow" id="card-color-transition">
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <img src={Person} className="img-fluid center-image" alt="lightbulb picture"></img>
+                                    <img src={Person} className="img-fluid center-image" alt="character silhouette"></img>
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">

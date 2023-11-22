@@ -17,7 +17,7 @@ export function Layout() {
                     <div className="collapse navbar-collapse" id="navmenu">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a href="/Projects/ProjectIndex" className="nav-link text-light">Home</a>
+                                <a href="/" className="nav-link text-light">Home</a>
                             </li>
                             <li className="nav-item">
                                 <a href="https://www.justintruong.studio" className="nav-link text-light">Portfolio</a>
