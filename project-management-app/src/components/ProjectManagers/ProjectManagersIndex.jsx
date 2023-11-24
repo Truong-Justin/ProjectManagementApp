@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Person from '/src/assets/person-picture.png';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Spinner from 'react-bootstrap/Spinner';
 
 
@@ -28,7 +29,10 @@ export function ProjectManagersIndex() {
     },[])
 
     return (
-        <div className="container">
+        <motion.div className="container"
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
             <div className="row my-5 d-sm-inline-flex d-none">
             {managersList ? ( managersList.map(projectManager => {
                 return (
@@ -57,6 +61,6 @@ export function ProjectManagersIndex() {
             <div className="text-center">
                 <Link to="/addprojectmanager" className="my-5 btn btn-md btn-secondary shadow">+ Add a project manager</Link>
             </div>
-        </div>
+        </motion.div>
     )
 }

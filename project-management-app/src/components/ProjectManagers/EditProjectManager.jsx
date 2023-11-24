@@ -1,5 +1,6 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
 
 // Component lets the user 
 // perform a full or partial
@@ -29,7 +30,10 @@ export function EditProjectManager() {
 
     return (
         <>
-        <div className="container d-none d-sm-none d-md-block">
+        <motion.div className="container d-none d-sm-none d-md-block"
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">
@@ -77,7 +81,7 @@ export function EditProjectManager() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
         <hr />
         </>
     )

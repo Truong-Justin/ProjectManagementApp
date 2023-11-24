@@ -30,8 +30,8 @@ export function Layout() {
                 </div>
             </nav>
             <div className="section flex-display">
-                <h1 className="text-center hero-title-text">BUG & PROJECT MANAGEMENT</h1>
-                <h4 className="hero-small-text d-md-block d-none">Keeping track of bugs and projects, all in one place.</h4>
+                <h1 className="text-center hero-title-text text-decoration-underline">PROJECT MANAGEMENT</h1>
+                <h4 className="hero-small-text d-xl-block d-none">Keeping track of bugs and projects, all in one place.</h4>
             </div>
             </section>
             <div className="container">

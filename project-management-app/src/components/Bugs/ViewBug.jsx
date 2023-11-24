@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Component renders the individual bug
 // object the user selected to view.
@@ -74,7 +75,10 @@ export function ViewBug() {
 
     return (
         <>
-        <div className="container d-none d-sm-none d-md-block">
+        <motion.div className="container d-none d-sm-none d-md-block"
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">
@@ -134,7 +138,7 @@ export function ViewBug() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
         <hr />
         </>
     )

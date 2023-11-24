@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Bug from '/src/assets/laptop-bug.png';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Spinner from 'react-bootstrap/Spinner';
 
 
@@ -41,7 +42,10 @@ export function BugsIndex() {
     },[])
 
     return (
-        <div className="container">
+        <motion.div className="container"
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
             <div className="row my-5 d-sm-inline-flex d-none">
             {bugsList ? ( bugsList.map(bug => {
                 return (
@@ -71,6 +75,6 @@ export function BugsIndex() {
             <div className="text-center">
                 <Link to="/AddBug" className="my-5 btn btn-md btn-secondary shadow">+ Add a bug</Link>
             </div>
-        </div>
+        </motion.div>
     )
 }
