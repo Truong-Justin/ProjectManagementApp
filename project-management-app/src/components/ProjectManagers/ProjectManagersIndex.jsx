@@ -30,14 +30,13 @@ export function ProjectManagersIndex() {
 
     return (
         <motion.div className="container"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="row my-5 d-sm-inline-flex d-none">
             {managersList ? ( managersList.map(projectManager => {
                 return (
                     <div className="col-md-4 mb-3" key={projectManager.projectManagerId}>
-                        <div className="card mb-3 shadow" id="card-color-transition">
+                        <motion.div className="card mb-3 shadow" id="card-color-transition"
+                        whileHover={{scale: 1.05}} whileTap={{scale: .9}}>
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img src={Person} className="img-fluid center-image" alt="character silhouette"></img>
@@ -51,7 +50,7 @@ export function ProjectManagersIndex() {
                                 </div>
                             </div>
                             <Link className="card-link" to={`/viewprojectmanager/${projectManager.projectManagerId}`}></Link>
-                        </div>
+                        </motion.div>
                     </div>
                 )
             })) : (<Spinner className="center-loader" animation="border" role="status">

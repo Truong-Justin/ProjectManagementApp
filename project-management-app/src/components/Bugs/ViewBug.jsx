@@ -14,7 +14,7 @@ export function ViewBug() {
     // Sends a GET request to get the
     // selected bug for viewing. 
     async function getBug() {
-        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetBugById?id=${bugId}`);
+        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/GetBugById?bugId=${bugId}`);
         const bug = await response.json();
         return bug;
     }
@@ -31,7 +31,7 @@ export function ViewBug() {
     // to delete the bug. Then the user is 
     // redirected back to the bugsindex page.
     async function deleteBug() {
-        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/DeleteBug?id=${bugId}`, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/DeleteBug?bugId=${bugId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -76,9 +76,7 @@ export function ViewBug() {
     return (
         <>
         <motion.div className="container d-none d-sm-none d-md-block"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">

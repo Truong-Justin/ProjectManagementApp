@@ -32,7 +32,7 @@ export function EditBug() {
     // endpoint to perform a full or 
     // partial update of the chosen record.
     const onSubmit = async (data) => {
-        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/UpdateBug?id=${bug.bugId}&description=${data.description}&priority=${data.priority}&assignment=${data.assignment}`, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Bugs/UpdateBug?bugId=${bug.bugId}&description=${data.description}&priority=${data.priority}&assignment=${data.assignment}`, {
             method: "PUT"
         });
         navigate("/bugsindex");
@@ -57,9 +57,7 @@ export function EditBug() {
     return (
         <>
         <motion.div className="container d-none d-sm-none d-md-block"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">

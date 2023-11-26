@@ -57,9 +57,7 @@ export function EditEmployee() {
     return (
         <>
         <motion.div className="container d-none d-sm-none d-md-block"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">

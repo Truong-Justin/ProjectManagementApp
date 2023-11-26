@@ -43,14 +43,13 @@ export function BugsIndex() {
 
     return (
         <motion.div className="container"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="row my-5 d-sm-inline-flex d-none">
             {bugsList ? ( bugsList.map(bug => {
                 return (
                     <div className="col-md-4 mb-3" key={bug.bugId}>
-                        <div className="card mb-3 shadow" id="card-color-transition">
+                        <motion.div className="card mb-3 shadow" id="card-color-transition"
+                        whileHover={{scale: 1.05}} whileTap={{scale: .9}}>
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img src={Bug} className="img-fluid center-image" alt="lightbulb picture"></img>
@@ -65,7 +64,7 @@ export function BugsIndex() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 )
             })) : (<Spinner className="center-loader" animation="border" role="status">

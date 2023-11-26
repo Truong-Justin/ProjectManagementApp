@@ -12,7 +12,7 @@ export function ViewProjectManager() {
     // Sends a GET request to get the selected
     // project manager for viewing. 
     async function getProjectManager() {
-        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?id=${projectManagerId}`);
+        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?projectManagerId=${projectManagerId}`);
         const data = response.json();
         return data;
     }
@@ -30,7 +30,7 @@ export function ViewProjectManager() {
     // to delete the project manager. Then the user is 
     // redirected back to the projectmanagersindex page.
     async function deleteManager() {
-        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/DeleteProjectManager?id=${projectManagerId}`, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/DeleteProjectManager?projectManagerId=${projectManagerId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'      
@@ -57,9 +57,7 @@ export function ViewProjectManager() {
     return (
         <>
         <motion.div className="container d-none d-sm-none d-md-block"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">

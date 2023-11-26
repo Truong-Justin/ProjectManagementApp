@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
 
 // Component allows a user to add a new 
 // bug record to the database by using sending
@@ -66,7 +67,8 @@ export function AddBug() {
 
     return (
         <>
-        <div className="container d-none d-sm-none d-md-block">
+        <motion.div className="container d-none d-sm-none d-md-block"
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">
@@ -143,7 +145,7 @@ export function AddBug() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
         <hr />
         </>
     )

@@ -12,7 +12,7 @@ export function ViewEmployee() {
     // Sends a GET request to get the
     // selected employee for viewing. 
     async function getEmployee() {
-        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/GetEmployeeById?id=${employeeId}`);
+        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/GetEmployeeById?employeeId=${employeeId}`);
         const data = await response.json();
         return data;
     }
@@ -30,7 +30,7 @@ export function ViewEmployee() {
     // to delete the employee. Then the user is 
     // redirected back to the employeesindex page.
     async function deleteEmployee() {
-        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/DeleteEmployee?id=${employeeId}`, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Employees/DeleteEmployee?employeeId=${employeeId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'  
@@ -57,9 +57,7 @@ export function ViewEmployee() {
     return (
         <>
         <motion.div className="container d-none d-sm-none d-md-block"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">

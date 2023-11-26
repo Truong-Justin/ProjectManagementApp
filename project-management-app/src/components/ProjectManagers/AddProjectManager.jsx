@@ -1,6 +1,7 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
 
 // Component allows a user to add a new 
 // project manager record to the database by 
@@ -25,7 +26,8 @@ export function AddProjectManager() {
 
     return (
         <>
-        <div className="container">
+        <motion.div className="container"
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">
@@ -85,7 +87,7 @@ export function AddProjectManager() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
         <hr />
         </>
     )

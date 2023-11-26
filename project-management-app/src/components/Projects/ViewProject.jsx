@@ -23,7 +23,7 @@ export function ViewProject() {
     // project manager in charge of
     // the selected project. 
     async function getProjectManager(project) {
-        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?id=${project.projectManagerId}`);
+        const response = await fetch(`https://projectsmanagementapi.azurewebsites.net/api/ProjectManager/GetProjectManagerById?projectManagerId=${project.projectManagerId}`);
         const data = await response.json();
         return data;
     }
@@ -63,7 +63,7 @@ export function ViewProject() {
     // to delete the project. Then the user is 
     // redirected back to the projectsindex page.
     async function deleteProject() {
-        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/DeleteProject?id=${projectId}`, {
+        await fetch(`https://projectsmanagementapi.azurewebsites.net/api/Projects/DeleteProject?projectId=${projectId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -100,9 +100,7 @@ export function ViewProject() {
     return (
         <>
         <motion.div className="container d-none d-sm-none d-md-block"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}>
+        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div className="my-5 mx-auto">
                 <div className="card shadow bg-light">
                     <div className="col-md-11 mx-auto">
