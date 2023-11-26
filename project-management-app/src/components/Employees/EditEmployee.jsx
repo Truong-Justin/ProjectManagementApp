@@ -69,7 +69,7 @@ export function EditEmployee() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Project Re-Assignment</h4>
-                                            <select name="project" {...register("project")} className="form-control w-75 bg-light">
+                                            <select name="project" {...register("project")} className="form-control w-75 bg-white shadow">
                                                 <option value={employee.projectId}>Select a project to re-assign to</option>
                                                 {projectsList.map(project => {
                                                     return <option key={project.value} value={project.value}>{project.text}</option>

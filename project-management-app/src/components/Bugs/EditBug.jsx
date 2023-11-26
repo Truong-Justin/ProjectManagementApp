@@ -69,7 +69,7 @@ export function EditBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Priority</h4>
-                                            <select name="priority" {...register("priority")} className="form-control shadow w-75 bg-light">
+                                            <select name="priority" {...register("priority")} className="form-control shadow w-75 bg-white">
                                                 <option value="Low">Low</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="High">High</option>
@@ -79,7 +79,7 @@ export function EditBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Assignment</h4>
-                                            <select name="assignment" {...register("assignment")} className="form-control shadow w-75 bg-light">
+                                            <select name="assignment" {...register("assignment")} className="form-control shadow w-75 bg-white">
                                                 <option value={bug.assignment}>Select an employee to re-assign</option>
                                                 {employeesList.map(employee => {
                                                     return <option key={employee.value} value={employee.text}>{employee.text}</option>

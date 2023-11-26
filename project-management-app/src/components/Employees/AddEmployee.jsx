@@ -102,7 +102,7 @@ export function AddEmployee() {
                                 </div>
                                 <div className="form-group mb-4">
                                     <h4 className="text-decoration-underline">Project Assigned-To</h4>
-                                    <select name="project" {...register("project", {required: true})} className="form-control shadow bg-light">
+                                    <select name="project" {...register("project", {required: true})} className="form-control shadow bg-white">
                                         <option value="">Select a project</option>
                                         {projectsList.map(project => {
                                             return <option key={project.value} value={project.value}>{project.text}</option>

@@ -64,7 +64,7 @@ export function AddProject() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Project Title</h4>
-                                            <textarea placeholder="Enter a title." rows="2" type="text" name="projectTitle" {...register("projectTitle", {required: true})} className="form-control"></textarea>
+                                            <textarea placeholder="Enter a title." rows="2" type="text" name="projectTitle" {...register("projectTitle", {required: true})} className="form-control w-75 shadow"></textarea>
                                             {errors.projectTitle?.type === "required" && (
                                                 <p className="errorMsg text-danger">A project title is required.</p>
                                             )}
@@ -73,7 +73,7 @@ export function AddProject() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Project Manager Assignment</h4>
-                                            <select name="projectManager" {...register("projectManager", {required: true})} className="form-control bg-light shadow w-75">
+                                            <select name="projectManager" {...register("projectManager", {required: true})} className="form-control bg-white shadow w-75">
                                                 <option value="">Select a project manager to assign</option>
                                                 {projectManagersList.map(projectManager => {
                                                     return <option key={projectManager.value} value={projectManager.value}>{projectManager.text}</option>
@@ -89,7 +89,7 @@ export function AddProject() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Start Date</h4>
-                                            <input type="date" name="date" {...register("date", {required: true})} className="form-control shadow w-50"></input>
+                                            <input type="date" name="date" {...register("date", {required: true})} className="form-control bg-white shadow w-50"></input>
                                             {errors.date?.type === "required" && (
                                                 <p className="errorMsg text-danger">A date must be chosen.</p>
                                             )}
@@ -98,7 +98,7 @@ export function AddProject() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Priority</h4>
-                                            <select name="priority" {...register("priority")} className="form-control bg-light shadow w-75">
+                                            <select name="priority" {...register("priority")} className="form-control bg-white shadow w-75">
                                                 <option value="Low">Low</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="High">High</option>
@@ -109,7 +109,7 @@ export function AddProject() {
                                 <div className="row my-5">
                                     <div className="form-outline">
                                         <h4 className="text-decoration-underline">Description</h4>
-                                        <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description", {required: true})} className="form-control"></textarea>
+                                        <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description", {required: true})} className="form-control shadow"></textarea>
                                         {errors.description?.type === "required" && (
                                             <p className="errorMsg text-danger">A description is required.</p>
                                         )}

@@ -80,7 +80,7 @@ export function EditProject() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Project Manager Re-assignment</h4>
-                                            <select name="projectManager" {...register("projectManager")} className="form-control shadow w-75 bg-light">
+                                            <select name="projectManager" {...register("projectManager")} className="form-control shadow w-75 bg-white">
                                                 <option value={project.projectManagerId}>Select a manager to re-assign</option>
                                                 {projectManagersList.map(projectManager => {
                                                     return <option key={projectManager.value} value={projectManager.value}>{projectManager.text}</option>
@@ -93,7 +93,7 @@ export function EditProject() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Priority</h4>
-                                            <select name="priority" {...register("priority")} className="form-control shadow w-25 bg-light">
+                                            <select name="priority" {...register("priority")} className="form-control shadow w-25 bg-white">
                                                 <option value="Low">Low</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="High">High</option>

@@ -80,7 +80,7 @@ export function AddBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Project Assignment</h4>
-                                            <select name="project" {...register("project", {required: true})} className="form-control shadow bg-light w-75">
+                                            <select name="project" {...register("project", {required: true})} className="form-control shadow bg-white w-75">
                                                 <option value="">Select a project</option>
                                                 {projectsList.map(project => {
                                                     return <option key={project.value} value={project.value}>{project.text}</option>
@@ -94,7 +94,7 @@ export function AddBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Employee Assignment</h4>
-                                            <select name="employee" {...register("employee", {required: true})} className="form-control bg-light shadow w-75">
+                                            <select name="employee" {...register("employee", {required: true})} className="form-control bg-white shadow w-75">
                                                 <option value="">Select an employee</option>
                                                 {employeesList.map(employee => {
                                                     return <option key={employee.value} value={employee.text}>{employee.text}</option>
@@ -119,7 +119,7 @@ export function AddBug() {
                                     <div className="col">
                                         <div className="form-outline">
                                             <h4 className="text-decoration-underline">Priority</h4>
-                                            <select name="priority" {...register("priority")} className="form-control bg-light shadow w-75">
+                                            <select name="priority" {...register("priority")} className="form-control bg-white shadow w-75">
                                                 <option value="Low">Low</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="High">High</option>
@@ -130,7 +130,7 @@ export function AddBug() {
                                 <div className="row my-5">
                                     <div className="form-outline">
                                         <h4 className="text-decoration-underline">Description</h4>
-                                        <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description", {required: true})} className="form-control"></textarea>
+                                        <textarea placeholder="Enter a description." rows="4" type="text" name="description" {...register("description", {required: true})} className="form-control shadow"></textarea>
                                         {errors.description?.type === "required" && (
                                             <p className="errorMsg text-danger">A description is required.</p>
                                         )}
