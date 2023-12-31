@@ -13,7 +13,8 @@ export function ProjectsIndex() {
 
     // Function returns the correct outline
     // color for the priority level using the 
-    // project object's priority property. 
+    // project object's priority property for 
+    // the desktop UI.
     function getPriorityDesktop(project) {
         switch(project.priority) {
             case "Low": 
@@ -25,6 +26,10 @@ export function ProjectsIndex() {
         }
     }
 
+    // Function returns the correct outline
+    // color for the priority level using the 
+    // project object's priority property for 
+    // the mobile UI.
     function getPriorityMobile(project) {
         switch(project.priority) {
             case "Low": 
