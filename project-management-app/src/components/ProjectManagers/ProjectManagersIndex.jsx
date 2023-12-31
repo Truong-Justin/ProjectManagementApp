@@ -29,9 +29,37 @@ export function ProjectManagersIndex() {
     },[])
 
     return (
-        <motion.div className="container"
-        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-            <div className="row my-5 d-sm-inline-flex d-none">
+        <div className="container">
+            {/*UI for mobile view*/}
+            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
+            className="row my-5 d-sm-none">
+            {managersList ? ( managersList.map(projectManager => {
+                return (
+                    <div className="col-md-4 mb-3" key={projectManager.projectManagerId}>
+                        <div className="card mb-3 shadow bg-light">
+                            <div className="row g-0">
+                                <div className="col-md-4">
+                                    <img src={Person} className="img-fluid center-image w-25 mt-5" alt="character silhouette"></img>
+                                </div>
+                                <div className="col-md-8 text-center">
+                                    <div className="card-body">
+                                        <h5 className="card-title" id="text-underline">{projectManager.firstName} {projectManager.lastName}</h5>
+                                        <p className="card-text">Manager Id: {projectManager.projectManagerId}</p>
+                                        <p className="card-text"><small className="text-muted">Hire Date: {projectManager.hireDate}</small></p>
+                                        <Link to={`/viewprojectmanager/${projectManager.projectManagerId}`} className="card-link"></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })) : (<Spinner className="center-loader" animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                    </Spinner>)}
+            </motion.div>
+            {/*UI for desktop view*/}
+            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} 
+            className="row my-5 d-sm-inline-flex d-none">
             {managersList ? ( managersList.map(projectManager => {
                 return (
                     <div className="col-md-4 mb-3" key={projectManager.projectManagerId}>
@@ -56,10 +84,10 @@ export function ProjectManagersIndex() {
             })) : (<Spinner className="center-loader" animation="border" role="status">
                        <span className="visually-hidden">Loading...</span>
                    </Spinner>)}
-            </div>
+            </motion.div>
             <div className="text-center">
                 <Link to="/addprojectmanager" className="my-5 btn btn-md btn-secondary shadow">+ Add a project manager</Link>
             </div>
-        </motion.div>
+        </div>
     )
 }
