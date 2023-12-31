@@ -14,7 +14,7 @@ export function ProjectsIndex() {
     // Function returns the correct outline
     // color for the priority level using the 
     // project object's priority property. 
-    function getPriority(project) {
+    function getPriorityDesktop(project) {
         switch(project.priority) {
             case "Low": 
                 return <p className="card-text shadow blink" id="low-priority">{project.priority} Priority</p>
@@ -22,6 +22,17 @@ export function ProjectsIndex() {
                 return <p className="card-text shadow blink" id="medium-priority">{project.priority} Priority</p>
             case "High": 
                 return <p className="card-text shadow blink" id="high-priority">{project.priority} Priority</p>
+        }
+    }
+
+    function getPriorityMobile(project) {
+        switch(project.priority) {
+            case "Low": 
+                return <p className="card-text shadow blink mx-auto" id="low-priority">{project.priority} Priority</p>
+            case "Medium":
+                return <p className="card-text shadow blink mx-auto" id="medium-priority">{project.priority} Priority</p>
+            case "High": 
+                return <p className="card-text shadow blink mx-auto" id="high-priority">{project.priority} Priority</p>
         }
     }
 
@@ -42,9 +53,40 @@ export function ProjectsIndex() {
     },[])
 
     return (
-        <motion.div className="container" 
-        initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-            <div className="row my-5 d-sm-inline-flex d-none">
+        <div className="container">
+            {/*UI for mobile view*/}
+            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
+            className="row my-5 d-sm-none">
+                {projectsList ? ( projectsList.map(project => {
+                    return (
+                        <div className="col-md-4 mb-3" key={project.projectId}>
+                            <div className="card mb-3 shadow bg-light">
+                                <div className="row g-0">
+                                    <div className="col-md-4">
+                                        <img src={Project} className="img-fluid center-image w-25 mt-5" alt="project picture"></img>
+                                    </div>
+                                    <div className="col-md-8 text-center">
+                                        <div className="card-body">
+                                            <h5 className="card-title" id="text-underline">{project.projectTitle.substring(0, 40)}...</h5>
+                                            <p className="card-text">{project.description.substring(0, 100)}...</p>
+                                            <p className="card-text"><small className="text-muted">Start Date: {project.date}</small></p>
+                                            <div className="mx-auto">
+                                            {getPriorityMobile(project)}
+                                            </div>
+                                            <Link to={`/viewproject/${project.projectId}`} state={{project}} className="card-link"></Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })) : (<Spinner className="center-loader" animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                       </Spinner>)}
+            </motion.div>
+            {/*UI for desktop view*/}
+            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} 
+            className="row my-5 d-sm-inline-flex d-none">
             {projectsList ? ( projectsList.map(project => {
                 return (
                     <div className="col-md-4 mb-3" key={project.projectId}>
@@ -52,14 +94,14 @@ export function ProjectsIndex() {
                         whileHover={{scale: 1.05}} whileTap={{scale: .9}}>
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <img src={Project} className="img-fluid center-image" alt="project picture"></img>
+                                    <img src={Project} className="img-fluid center-image img-scale" alt="project picture"></img>
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
                                         <h5 className="card-title card-text-color" id="text-underline">{project.projectTitle.substring(0, 40)}...</h5>
                                         <p className="card-text card-text-color">{project.description.substring(0, 70)}...</p>
                                         <p className="card-text"><small className="card-date-color">Date Submitted: {project.date}</small></p>
-                                        {getPriority(project)}
+                                        {getPriorityDesktop(project)}
                                         <Link to={`/viewproject/${project.projectId}`} state={{project}} className="card-link"></Link>
                                     </div>
                                 </div>
@@ -68,12 +110,12 @@ export function ProjectsIndex() {
                     </div>
                 )
             })) : (<Spinner className="center-loader" animation="border" role="status">
-                       <span className="visually-hidden">Loading...</span>
-                   </Spinner>)}
-            </div>
-            <div className="text-center">
-                <Link to="/AddProject" className="my-5 btn btn-md btn-secondary shadow">+ Add a project</Link>
-            </div>
-        </motion.div>
+                    <span className="visually-hidden">Loading...</span>
+                    </Spinner>)}
+            </motion.div>
+                <div className="text-center">
+                    <Link to="/AddProject" className="my-5 btn btn-md btn-secondary shadow">+ Add a project</Link>
+                </div>
+        </div>
     )
 }
